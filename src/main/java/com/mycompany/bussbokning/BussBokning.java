@@ -140,7 +140,15 @@ public class BussBokning {
     }
     
     private static void hittaBokning() {
+        if (platser.length == 0) {
+            System.out.println("Det finns inga bokade platser");
+            return;
+        }
         
+        long personNmr = personNmrInmatning();
+        String bokadePlatser = visaBokadePlatserEnRad(platserFörPersonNmr(personNmr));
+        
+        System.out.println("Personen med personnummret: " + personNmr + " har bokat följande platser " + bokadePlatser);
     }
     
     private static String hanteraPlatsInmatning() {
@@ -319,6 +327,11 @@ public class BussBokning {
     }
     
     private static void avbokaPlats() {
+        if (platser.length == 0) {
+            System.out.println("Det finns inga bokade platser");
+            return;
+        }
+        
         long personNmr = personNmrInmatning();
         int[] bokadePlatser = platserFörPersonNmr(personNmr);
         
